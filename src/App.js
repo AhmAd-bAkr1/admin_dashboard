@@ -75,7 +75,7 @@ const router = createBrowserRouter([
     element: <AppLayout />, // المكون الرئيسي الذي يحتوي على الهيكل العام
     children: [
       {
-        path: '/',
+        path: '/admin_dashboard',
         element: <Ecommerce />,
       },
       {
