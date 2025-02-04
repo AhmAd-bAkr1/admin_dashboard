@@ -69,3 +69,32 @@
 .f-height{
   height: 103vh;
 }
+@media (width <= 380px) {
+  html{
+    overflow-x: hidden;
+  }
+.wid100{
+  width: 100%;
+  padding: 1rem;
+  overflow: hidden;
+} 
+.wid94{
+  width: 94%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+.wid90{
+  width: 90%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+ .p0{
+  padding: 0;
+ } 
+}

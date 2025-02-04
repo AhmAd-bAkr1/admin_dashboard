@@ -11,7 +11,7 @@ const ThemeSettings = () => {
 
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
-      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400">
+      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400 wid100">
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-lg">Settings</p>
           <button
@@ -60,7 +60,7 @@ const ThemeSettings = () => {
         </div>
         <div className="p-4 border-t-1 border-color ml-4">
           <p className="font-semibold text-xl ">Theme Colors</p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-wrap">
             {themeColors.map((item, index) => (
               <TooltipComponent key={index} content={item.name} position="TopCenter">
                 <div

@@ -1,7 +1,7 @@
 {
-   "homepage": "http://AhmAd-bAkr1.github.io/admin_dashboard",
-   "name": "project_syncfusion_dashboard",
+   "name":"admin_dashboard",
    "version": "0.1.0",
+   "homepage": "http://AhmAd-bAkr1.github.io/admin_dashboard",
    "private": true,
    "dependencies": {
       "@syncfusion/ej2": "^19.4.48",

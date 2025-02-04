@@ -95,7 +95,7 @@ const Ecommerce = () => {
       </div>
 
       <div className="flex gap-10 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780 wid94">
           <div className="flex justify-between">
             <p className="font-semibold text-xl">Revenue Updates</p>
             <div className="flex items-center gap-4">
@@ -114,7 +114,7 @@ const Ecommerce = () => {
             </div>
           </div>
           <div className="mt-10 flex gap-10 flex-wrap justify-center">
-            <div className=" border-r-1 border-color m-4 pr-10">
+            <div className=" border-r-1 border-color m-4 pr-10 p0">
               <div>
                 <p>
                   <span className="text-3xl font-semibold">$93,438</span>
@@ -149,7 +149,7 @@ const Ecommerce = () => {
         </div>
         <div>
           <div
-            className=" rounded-2xl md:w-400 p-4 m-3"
+            className=" rounded-2xl md:w-400 p-4 m-3 wid94"
             style={{ backgroundColor: currentColor }}
           >
             <div className="flex justify-between items-center ">
@@ -166,7 +166,7 @@ const Ecommerce = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10">
+          <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10 wid90">
             <div>
               <p className="text-2xl font-semibold ">$43,246</p>
               <p className="text-gray-400">Yearly sales</p>
@@ -180,14 +180,14 @@ const Ecommerce = () => {
       </div>
 
       <div className="flex gap-10 m-4 flex-wrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl wid100">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Recent Transactions</p>
             <DropDown currentMode={currentMode} />
           </div>
-          <div className="mt-10 w-72 md:w-400">
+          <div className="mt-10 w-72 md:w-400 wid100">
             {recentTransactions.map((item) => (
-              <div key={item.title} className="flex justify-between mt-4">
+              <div key={item.title} className="flex justify-between mt-4 wid90">
                 <div className="flex gap-4">
                   <button
                     type="button"
@@ -233,7 +233,7 @@ const Ecommerce = () => {
       </div>
 
       <div className="flex flex-wrap justify-center">
-        <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+        <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3 wid94">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Weekly Stats</p>
             <button type="button" className="text-xl font-semibold text-gray-500">
