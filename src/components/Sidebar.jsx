@@ -25,7 +25,7 @@ const Sidebar = () => {
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">
-            <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
+            <Link to="/ecommerce" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
               <SiShopware /> <span>Shoppy</span>
             </Link>
             <TooltipComponent content="Menu" position="BottomCenter">
@@ -33,7 +33,7 @@ const Sidebar = () => {
                 type="button"
                 onClick={() => setActiveMenu(!activeMenu)}
                 style={{ color: currentColor }}
-                className="text-3xl rounded-full hover:bg-light-gray mt-3 ml-3 md:hidden fixed z-100 bg-white"
+                className="text-3xl rounded-full hover:bg-light-gray mt- ml-3 fixed z-100 bg-white"
               >
                 <IoMdCloseCircle />
               </button>
