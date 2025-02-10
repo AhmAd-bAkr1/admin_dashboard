@@ -1,9 +1,12 @@
 {
-   "name":"admin_dashboard",
+   "name": "admin_dashboard",
    "version": "0.1.0",
-   "homepage": "http://AhmAd-bAkr1.github.io/admin_dashboard",
+   "homepage": "https://AhmAd-bAkr1.github.io/admin_dashboard",
    "private": true,
    "dependencies": {
+      "@emotion/react": "^11.14.0",
+      "@emotion/styled": "^11.14.0",
+      "@mui/material": "^6.4.3",
       "@syncfusion/ej2": "^19.4.48",
       "@syncfusion/ej2-react-calendars": "^19.4.48",
       "@syncfusion/ej2-react-charts": "^19.4.50",

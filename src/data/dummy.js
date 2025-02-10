@@ -26,7 +26,7 @@ import product7 from './product7.jpg';
 export const gridOrderImage = (props) => (
   <div>
     <img
-      className="rounded-xl h-20 md:ml-3"
+      className="rounded-xl h-20 md:ml-3 "
       src={props.ProductImage}
       alt="order-item"
     />
@@ -481,7 +481,6 @@ export const links = [
   },
 
   {
-    title: 'Pages',
     links: [
       {
         name: 'orders',
@@ -498,7 +497,6 @@ export const links = [
     ],
   },
   {
-    title: 'Apps',
     links: [
       {
         name: 'calendar',
@@ -614,6 +612,15 @@ export const chatData = [
 ];
 
 export const earningData = [
+  {
+    icon: <BsCurrencyDollar />,
+    amount: '$63,448.78',
+    percentage: '+26%',
+    title: 'Earning',
+    iconColor: '#22c55e',
+    iconBg: '#E5FAFB',
+    pcColor: 'green-600',
+  },
   {
     icon: <MdOutlineSupervisorAccount />,
     amount: '39,354',
@@ -821,11 +828,15 @@ export const medicalproBranding = {
 
 export const themeColors = [
   {
+    name: 'green-theme',
+    color: '#22c55e',
+  },
+  {
     name: 'blue-theme',
     color: '#1A97F5',
   },
   {
-    name: 'green-theme',
+    name: 'babyBlue-theme',
     color: '#03C9D7',
   },
   {

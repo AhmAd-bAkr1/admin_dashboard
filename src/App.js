@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'; // استيراد المكونات الجديدة
 import { FiSettings } from 'react-icons/fi';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import Tooltip from '@mui/material/Tooltip';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
 import './App.css';
@@ -25,10 +25,7 @@ const AppLayout = () => {
 
       <div className="flex relative dark:bg-main-dark-bg">
         <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
-          <TooltipComponent
-            content="Settings"
-            position="Top"
-          >
+          <Tooltip title="Settings" placement="top-end">
             <button
               type="button"
               onClick={() => setThemeSettings(true)}
@@ -37,12 +34,14 @@ const AppLayout = () => {
             >
               <FiSettings />
             </button>
-          </TooltipComponent>
+          </Tooltip>
         </div>
         {activeMenu ? (
-          <div className="w-56 fixed sidebar dark:bg-secondary-dark-bg secondary-color z-10 f-height">
+
+          <div className="w-56 fixed sidebar dark:bg-secondary-dark-bg secondary-color z-10 f-height bg-white">
             <Sidebar />
           </div>
+
         ) : (
           <div className="w-0 dark:bg-secondary-dark-bg ">
             <Sidebar />
@@ -50,13 +49,12 @@ const AppLayout = () => {
         )}
         <div
           className={activeMenu
-            ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen lg:ml-56 w-full gradient-bg shadow-none'
-            : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 gradient-bg shadow-none'}
+            ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen lg:ml-56 w-full  shadow-none'
+            : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2  shadow-none'}
         >
 
-          <div className="fixed top-0 left-0 w-full bg-main-bg dark:bg-main-dark-bg navbar secondary-color">
-            <Navbar />
-          </div>
+          <Navbar />
+
           <div>
             {themeSettings && (<ThemeSettings />)}
             <Outlet /> {/* يتم استخدام Outlet لعرض المكونات الفرعية */}

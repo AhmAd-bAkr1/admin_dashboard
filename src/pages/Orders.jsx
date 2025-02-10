@@ -7,8 +7,8 @@ import { Header } from '../components';
 const Orders = () => {
   const editing = { allowDeleting: true, allowEditing: true };
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Orders" />
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl  dark:text-gray-200 dark:bg-secondary-dark-bg">
+      <Header title="Orders" />
       <GridComponent
         id="gridcomp"
         dataSource={ordersData}
@@ -18,6 +18,7 @@ const Orders = () => {
         allowPdfExport
         contextMenuItems={contextMenuItems}
         editSettings={editing}
+        className="bg-black"
       >
         <ColumnsDirective>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
