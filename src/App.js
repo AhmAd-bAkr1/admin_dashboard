@@ -38,12 +38,19 @@ const AppLayout = () => {
         </div>
         {activeMenu ? (
 
-          <div className="w-56 fixed sidebar dark:bg-secondary-dark-bg secondary-color z-10 f-height bg-white">
+          <div
+            className="w-56 fixed sidebar dark:bg-secondary-dark-bg secondary-color z-10 f-height bg-white"
+            style={{
+              transition: 'width 0.2s ease', // إضافة تأثير التبديل (اختياري)
+            }}
+          >
             <Sidebar />
           </div>
 
         ) : (
-          <div className="w-0 dark:bg-secondary-dark-bg ">
+          <div
+            className="w-0 dark:bg-secondary-dark-bg "
+          >
             <Sidebar />
           </div>
         )}
