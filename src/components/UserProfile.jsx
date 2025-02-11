@@ -10,7 +10,7 @@ const UserProfile = () => {
   const { currentColor } = useStateContext();
 
   return (
-    <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-full sm:w-96">
+    <div className="nav-item fixed right-1 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-full md:w-96  max-w-full lg:max-w-screen-lg overflow-auto max-h-screen">
       <div className="flex justify-between items-center">
         <p className="font-semibold text-lg dark:text-gray-200">User Profile</p>
         <Button
@@ -22,7 +22,7 @@ const UserProfile = () => {
         />
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-5 items-center mt-6 border-color border-b-1 pb-6">
+      <div className="flex flex-row gap-5 items-center border-color border-b-1 pb-6">
         <img
           className="rounded-full h-24 w-24 sm:h-28 sm:w-28"
           src={avatar}
