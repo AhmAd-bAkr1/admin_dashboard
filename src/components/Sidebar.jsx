@@ -52,8 +52,8 @@ const Sidebar = () => {
           </div>
 
           <div className="mt-10">
-            {memoizedLinks.map((item) => (
-              <div key={item.title}>
+            {memoizedLinks.map((item, index) => (
+              <div key={index}> {/* يمكن استخدام index هنا إذا لم يكن هناك فريدة قيمة واضحة */}
                 <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase primarycolor">
                   {item.title}
                 </p>
@@ -79,6 +79,7 @@ const Sidebar = () => {
               </div>
             ))}
           </div>
+
         </>
       )}
     </div>

@@ -6,7 +6,9 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import Tooltip from '@mui/material/Tooltip';
 import avatar from '../data/avatar.jpg';
-import { Chat, Notification, UserProfile } from '.';
+import UserProfile from './UserProfile';
+import Chat from './Chat';
+import Notification from './Notification';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, zIndex }) => (
