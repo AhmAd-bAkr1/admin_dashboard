@@ -1,17 +1,13 @@
-/* eslint-disable react/no-deprecated */
 import React from 'react';
-// import ReactDOM from 'react-dom/client'; // ✅ Correct import
-import './index.css';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
+import { ContextProvider } from './contexts/ContextProvider'; // تأكد من المسار الصحيح
+import './index.css';
 
-import { ContextProvider } from './contexts/ContextProvider';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
+root.render(
+  <ContextProvider>
+    <App />
+  </ContextProvider>,
 );

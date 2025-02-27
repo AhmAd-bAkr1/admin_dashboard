@@ -1,30 +1,34 @@
 import React, { useEffect } from 'react';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'; // استيراد المكونات الجديدة
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import Tooltip from '@mui/material/Tooltip';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import {
+  Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers,
+  Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor,
+} from './pages';
 import './App.css';
-
 import { useStateContext } from './contexts/ContextProvider';
 
 const AppLayout = () => {
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+  const {
+    setCurrentColor, setCurrentMode, currentMode, activeMenu,
+    currentColor, themeSettings, setThemeSettings,
+  } = useStateContext();
 
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, []);
+    const storedColor = localStorage.getItem('colorMode');
+    const storedMode = localStorage.getItem('themeMode');
+
+    if (storedColor) setCurrentColor(storedColor);
+    if (storedMode) setCurrentMode(storedMode);
+  }, [setCurrentColor, setCurrentMode]);
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
-
       <div className="flex relative dark:bg-main-dark-bg">
-        <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+        {/* زر الإعدادات */}
+        <div className="fixed right-4 bottom-4 z-[1000]">
           <Tooltip title="Settings" placement="top-end">
             <button
               type="button"
@@ -36,35 +40,20 @@ const AppLayout = () => {
             </button>
           </Tooltip>
         </div>
-        {activeMenu ? (
 
-          <div
-            className="w-56 fixed sidebar dark:bg-secondary-dark-bg secondary-color z-10 f-height bg-white"
-            style={{
-              transition: 'width 0.2s ease', // إضافة تأثير التبديل (اختياري)
-            }}
-          >
-            <Sidebar />
-          </div>
-
-        ) : (
-          <div
-            className="w-0 dark:bg-secondary-dark-bg "
-          >
+        {/* الشريط الجانبي */}
+        {activeMenu && (
+          <div className="w-56 fixed sidebar dark:bg-secondary-dark-bg bg-white transition-all duration-200 z-10">
             <Sidebar />
           </div>
         )}
-        <div
-          className={activeMenu
-            ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen lg:ml-56 w-full  shadow-none'
-            : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2  shadow-none'}
-        >
 
+        {/* المحتوى الرئيسي */}
+        <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'lg:ml-56' : ''}`}>
           <Navbar />
-
           <div>
-            {themeSettings && (<ThemeSettings />)}
-            <Outlet /> {/* يتم استخدام Outlet لعرض المكونات الفرعية */}
+            {themeSettings && <ThemeSettings />}
+            <Outlet />
           </div>
           <Footer />
         </div>
@@ -77,76 +66,25 @@ const AppLayout = () => {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />, // المكون الرئيسي الذي يحتوي على الهيكل العام
+    element: <AppLayout />,
     children: [
-      {
-        path: '/admin_dashboard',
-        element: <Ecommerce />,
-      },
-      {
-        path: '/ecommerce',
-        element: <Ecommerce />,
-      },
-      {
-        path: '/orders',
-        element: <Orders />,
-      },
-      {
-        path: '/employees',
-        element: <Employees />,
-      },
-      {
-        path: '/customers',
-        element: <Customers />,
-      },
-      {
-        path: '/kanban',
-        element: <Kanban />,
-      },
-      {
-        path: '/editor',
-        element: <Editor />,
-      },
-      {
-        path: '/calendar',
-        element: <Calendar />,
-      },
-      {
-        path: '/color-picker',
-        element: <ColorPicker />,
-      },
-      {
-        path: '/line',
-        element: <Line />,
-      },
-      {
-        path: '/area',
-        element: <Area />,
-      },
-      {
-        path: '/bar',
-        element: <Bar />,
-      },
-      {
-        path: '/pie',
-        element: <Pie />,
-      },
-      {
-        path: '/financial',
-        element: <Financial />,
-      },
-      {
-        path: '/color-mapping',
-        element: <ColorMapping />,
-      },
-      {
-        path: '/pyramid',
-        element: <Pyramid />,
-      },
-      {
-        path: '/stacked',
-        element: <Stacked />,
-      },
+      { path: '/admin_dashboard', element: <Ecommerce /> },
+      { path: '/ecommerce', element: <Ecommerce /> },
+      { path: '/orders', element: <Orders /> },
+      { path: '/employees', element: <Employees /> },
+      { path: '/customers', element: <Customers /> },
+      { path: '/kanban', element: <Kanban /> },
+      { path: '/editor', element: <Editor /> },
+      { path: '/calendar', element: <Calendar /> },
+      { path: '/color-picker', element: <ColorPicker /> },
+      { path: '/line', element: <Line /> },
+      { path: '/area', element: <Area /> },
+      { path: '/bar', element: <Bar /> },
+      { path: '/pie', element: <Pie /> },
+      { path: '/financial', element: <Financial /> },
+      { path: '/color-mapping', element: <ColorMapping /> },
+      { path: '/pyramid', element: <Pyramid /> },
+      { path: '/stacked', element: <Stacked /> },
     ],
   },
 ]);

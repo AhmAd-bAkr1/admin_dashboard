@@ -5,7 +5,7 @@ import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
 import { earningData, medicalproBranding, recentTransactions, weeklyStats, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import '../App.css';
-import product9 from '../data/product9.jpg';
+import product9 from '../data/product9.webp';
 
 const Ecommerce = () => {
   // const { activeMenu } = useStateContext();
