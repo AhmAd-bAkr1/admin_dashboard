@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const StateContext = createContext();
 
@@ -10,47 +10,43 @@ const initialState = {
 };
 
 export const ContextProvider = ({ children }) => {
-  const [screenSize, setScreenSize] = useState(null);
-  const [currentColor, setCurrentColor] = useState(localStorage.getItem('colorMode') || '#22c55e');
-  const [currentMode, setCurrentMode] = useState(localStorage.getItem('themeMode') || 'Light');
+  const [screenSize, setScreenSize] = useState(undefined);
+  const [currentColor, setCurrentColor] = useState('#22c55e');
+  const [currentMode, setCurrentMode] = useState('Light');
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
 
-  useEffect(() => {
-    localStorage.setItem('themeMode', currentMode);
-  }, [currentMode]);
+  const setMode = (e) => {
+    setCurrentMode(e.target.value);
+    localStorage.setItem('themeMode', e.target.value);
+  };
 
-  useEffect(() => {
-    localStorage.setItem('colorMode', currentColor);
-  }, [currentColor]);
+  const setColor = (color) => {
+    setCurrentColor(color);
+    localStorage.setItem('colorMode', color);
+  };
 
-  const setMode = (e) => setCurrentMode(e.target.value);
-  const setColor = (color) => setCurrentColor(color);
-  const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
+  const handleClick = (clickedItem) => {
+    setIsClicked((prev) => {
+      // إذا كانت النافذة المطلوبة مفتوحة بالفعل، أغلقها فقط
+      if (prev[clickedItem]) {
+        return { ...prev, [clickedItem]: false };
+      }
 
-  // ✅ تحسين الأداء باستخدام useMemo لمنع إعادة إنشاء الكائن في كل إعادة تصيير
-  const contextValue = useMemo(() => ({
-    currentColor,
-    currentMode,
-    activeMenu,
-    screenSize,
-    setScreenSize,
-    handleClick,
-    isClicked,
-    initialState,
-    setIsClicked,
-    setActiveMenu,
-    setCurrentColor,
-    setCurrentMode,
-    setMode,
-    setColor,
-    themeSettings,
-    setThemeSettings,
-  }), [currentColor, currentMode, activeMenu, screenSize, isClicked, themeSettings]);
+      // إغلاق جميع النوافذ الأخرى وفتح النافذة المطلوبة فقط
+      return {
+        chat: false,
+        notification: false,
+        userProfile: false,
+        [clickedItem]: true,
+      };
+    });
+  };
 
   return (
-    <StateContext.Provider value={contextValue}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings }}>
       {children}
     </StateContext.Provider>
   );

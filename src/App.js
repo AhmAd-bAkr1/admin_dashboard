@@ -1,14 +1,28 @@
-import React, { useEffect } from 'react';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import Tooltip from '@mui/material/Tooltip';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import {
-  Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers,
-  Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor,
-} from './pages';
 import './App.css';
 import { useStateContext } from './contexts/ContextProvider';
+
+// ✅ تحميل الصفحات بشكل Lazy لتحسين الأداء
+const Ecommerce = lazy(() => import('./pages/Ecommerce'));
+const Orders = lazy(() => import('./pages/Orders'));
+const Employees = lazy(() => import('./pages/Employees'));
+const Customers = lazy(() => import('./pages/Customers'));
+const Kanban = lazy(() => import('./pages/Kanban'));
+const Editor = lazy(() => import('./pages/Editor'));
+const Calendar = lazy(() => import('./pages/Calendar'));
+const ColorPicker = lazy(() => import('./pages/ColorPicker'));
+const Line = lazy(() => import('./pages/Charts/Line'));
+const Area = lazy(() => import('./pages/Charts/Area'));
+const Bar = lazy(() => import('./pages/Charts/Bar'));
+const Pie = lazy(() => import('./pages/Charts/Pie'));
+const Financial = lazy(() => import('./pages/Charts/Financial'));
+const ColorMapping = lazy(() => import('./pages/Charts/ColorMapping'));
+const Pyramid = lazy(() => import('./pages/Charts/Pyramid'));
+const Stacked = lazy(() => import('./pages/Charts/Stacked'));
 
 const AppLayout = () => {
   const {
@@ -17,11 +31,8 @@ const AppLayout = () => {
   } = useStateContext();
 
   useEffect(() => {
-    const storedColor = localStorage.getItem('colorMode');
-    const storedMode = localStorage.getItem('themeMode');
-
-    if (storedColor) setCurrentColor(storedColor);
-    if (storedMode) setCurrentMode(storedMode);
+    setCurrentColor(localStorage.getItem('colorMode') || '#1A97F5');
+    setCurrentMode(localStorage.getItem('themeMode') || 'Light');
   }, [setCurrentColor, setCurrentMode]);
 
   return (
@@ -32,7 +43,7 @@ const AppLayout = () => {
           <Tooltip title="Settings" placement="top-end">
             <button
               type="button"
-              onClick={() => setThemeSettings(true)}
+              onClick={() => setThemeSettings((prev) => !prev)} // ✅ التبديل بين الفتح والإغلاق
               style={{ background: currentColor, borderRadius: '50%' }}
               className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
             >
@@ -51,10 +62,29 @@ const AppLayout = () => {
         {/* المحتوى الرئيسي */}
         <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'lg:ml-56' : ''}`}>
           <Navbar />
-          <div>
-            {themeSettings && <ThemeSettings />}
-            <Outlet />
-          </div>
+          {themeSettings && <ThemeSettings />} {/* ✅ استخدام themeSettings فعليًا */}
+          <Suspense fallback={<div className="text-center mt-10">⏳ Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Ecommerce />} />
+              <Route path="/admin_dashboard" element={<Ecommerce />} />
+              <Route path="/ecommerce" element={<Ecommerce />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/employees" element={<Employees />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/kanban" element={<Kanban />} />
+              <Route path="/editor" element={<Editor />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/color-picker" element={<ColorPicker />} />
+              <Route path="/line" element={<Line />} />
+              <Route path="/area" element={<Area />} />
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/financial" element={<Financial />} />
+              <Route path="/color-mapping" element={<ColorMapping />} />
+              <Route path="/pyramid" element={<Pyramid />} />
+              <Route path="/stacked" element={<Stacked />} />
+            </Routes>
+          </Suspense>
           <Footer />
         </div>
       </div>
@@ -62,32 +92,10 @@ const AppLayout = () => {
   );
 };
 
-// تعريف المسارات
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <AppLayout />,
-    children: [
-      { path: '/admin_dashboard', element: <Ecommerce /> },
-      { path: '/ecommerce', element: <Ecommerce /> },
-      { path: '/orders', element: <Orders /> },
-      { path: '/employees', element: <Employees /> },
-      { path: '/customers', element: <Customers /> },
-      { path: '/kanban', element: <Kanban /> },
-      { path: '/editor', element: <Editor /> },
-      { path: '/calendar', element: <Calendar /> },
-      { path: '/color-picker', element: <ColorPicker /> },
-      { path: '/line', element: <Line /> },
-      { path: '/area', element: <Area /> },
-      { path: '/bar', element: <Bar /> },
-      { path: '/pie', element: <Pie /> },
-      { path: '/financial', element: <Financial /> },
-      { path: '/color-mapping', element: <ColorMapping /> },
-      { path: '/pyramid', element: <Pyramid /> },
-      { path: '/stacked', element: <Stacked /> },
-    ],
-  },
-]);
+const App = () => (
+  <Router>
+    <AppLayout />
+  </Router>
+);
 
-const App = () => <RouterProvider router={router} />;
 export default App;
