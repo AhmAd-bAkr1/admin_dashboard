@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkadmin_dashboard=self.webpackChunkadmin_dashboard||[]).push([[106],{1106:(s,d,e)=>{e.r(d),e.d(d,{default:()=>o});e(5043);var a=e(7623),r=e(3527),i=e(237),t=e(7125),c=e(2478),h=e(6321),l=e(4911),m=e(5486),n=e(6795),p=e(579);const o=()=>(0,p.jsxs)("div",{className:"m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl",children:[(0,p.jsx)(m.Y9,{category:"App",title:"Editor"}),(0,p.jsxs)(a.q,{children:[(0,p.jsx)(n.W,{}),(0,p.jsx)(r.y_,{services:[i.D,t.M,c._,h.N,l.v]})]})]})}}]);
+//# sourceMappingURL=106.50669f94.chunk.js.map

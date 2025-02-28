@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkadmin_dashboard=self.webpackChunkadmin_dashboard||[]).push([[225],{5225:(d,a,e)=>{e.r(a),e.d(a,{default:()=>r});e(5043);var s=e(6795),i=e(5486),l=e(579);const r=()=>(0,l.jsxs)("div",{className:"m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl",children:[(0,l.jsx)(i.fd,{category:"Pie",title:"Project Cost Breakdown"}),(0,l.jsx)("div",{className:"w-full",children:(0,l.jsx)(i.Fq,{id:"chart-pie",data:s.bS,legendVisiblity:!0,height:"full"})})]})}}]);
+//# sourceMappingURL=225.f2f80b93.chunk.js.map

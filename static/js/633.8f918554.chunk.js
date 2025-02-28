@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkadmin_dashboard=self.webpackChunkadmin_dashboard||[]).push([[633],{1633:(a,d,s)=>{s.r(d),s.d(d,{default:()=>n});s(5043);var e=s(5486),l=s(579);const n=()=>(0,l.jsxs)("div",{className:"m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl",children:[(0,l.jsx)(e.fd,{category:"Line",title:"Inflation Rate"}),(0,l.jsx)("div",{className:"w-full",children:(0,l.jsx)(e.bl,{})})]})}}]);
+//# sourceMappingURL=633.8f918554.chunk.js.map

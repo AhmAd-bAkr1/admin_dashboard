@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkadmin_dashboard=self.webpackChunkadmin_dashboard||[]).push([[524],{8524:(d,a,e)=>{e.r(a),e.d(a,{default:()=>c});e(5043);var s=e(5486),r=e(579);const c=()=>(0,r.jsxs)("div",{className:"m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl",children:[(0,r.jsx)(s.fd,{category:"Stacked",title:"Revenue Breakdown"}),(0,r.jsx)("div",{className:"w-full",children:(0,r.jsx)(s.Ay,{})})]})}}]);
+//# sourceMappingURL=524.36ee5264.chunk.js.map
